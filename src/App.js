@@ -9,7 +9,7 @@ import Rank from './Components/Rank/Rank';
 import React, { Component } from 'react';
 
 const URL = window.location.hostname !== 'localhost' ? 'https://smart-brain-api-p7oz.onrender.com/'
-: 'http://localhost:8080/'
+  : 'http://localhost:8080/'
 
 const initialState = {
   input: "",
