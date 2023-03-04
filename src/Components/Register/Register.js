@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React from "react";
 
 class Register extends React.Component {
@@ -24,7 +24,7 @@ class Register extends React.Component {
     }
 
     onSubmitSignin = () => {
-        fetch("https://smart-brain-api-p7oz.onrender.com/register", {
+        fetch(this.props.url + "register", {
             method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
