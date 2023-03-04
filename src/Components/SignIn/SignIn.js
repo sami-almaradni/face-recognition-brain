@@ -18,7 +18,7 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignin = () => {
-        fetch("http://localhost:8080/signin", {
+        fetch(this.props.url + "signin", {
             method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

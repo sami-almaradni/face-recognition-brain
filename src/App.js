@@ -8,6 +8,9 @@ import Register from './Components/Register/Register';
 import Rank from './Components/Rank/Rank';
 import React, { Component } from 'react';
 
+const URL = window.location.hostname !== 'localhost' ? 'https://smart-brain-api-p7oz.onrender.com/'
+: 'http://localhost:8080/'
+
 const initialState = {
   input: "",
   imageUrl: "",
@@ -66,7 +69,7 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch("http://localhost:8080/imageurl", {
+    fetch(URL + "imageurl", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -76,7 +79,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch("http://localhost:8080/image", {
+          fetch(URL + "image", {
             method: "put",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -123,8 +126,8 @@ class App extends Component {
             />
           </div>
           : (
-            route === "register" ? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+            route === "register" ? <Register url={URL} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              : <SignIn url={URL} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )
         }
       </div>
